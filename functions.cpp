@@ -57,24 +57,20 @@ void displayList(Node* head) {
     cout << " ]" << endl;
 }
 
-void deleteLastNode(Node** head) {
+void deleteList(Node** head) {
     if (*head == nullptr) {
-        cout << "List is already empty." << endl;
+        cout << "Lista já está vazia." << endl;
         return;
     }
 
-    Node* nodeToDelete = *head;
+    Node* current = *head;
+    Node* nextNode = nullptr;
 
-    if ((*head)->ptrNext == nullptr) {
-        free(nodeToDelete);
-        *head = nullptr;
-        return;
+    while (current != nullptr) {
+        nextNode = current->ptrNext;
+        free(current);
+        current = nextNode;
     }
 
-    while (nodeToDelete->ptrNext != nullptr) {
-        nodeToDelete = nodeToDelete->ptrNext;
-    }
-
-    nodeToDelete->ptrPrev->ptrNext = nullptr;
-    free(nodeToDelete);
+    *head = nullptr;
 }
