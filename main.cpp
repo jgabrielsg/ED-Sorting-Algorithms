@@ -11,8 +11,8 @@ using std::ofstream;
 
 int main() {
     // Valores teste
-    const int listSize = 10;
-    const int numberOfLists = 10;
+    const int listSize = 10000;
+    const int numberOfLists = 100;
     
     // Abre os CSV's para salvar os tempos
     ofstream bubbleSortFile("bubble_sort_times.csv");
