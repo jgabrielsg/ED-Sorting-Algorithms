@@ -33,7 +33,7 @@ int main() {
         
         // Preenchendo listas com dados aleatórios
         for(int j = 0; j < listSize; j++) {
-            int payload = rand() % 100; // Gera um número aleatório entre 0 e 100
+            int payload = (rand() % 100) + 1; // Gera um número aleatório entre 1 e 100
             insertEnd(&head1, payload);
             insertEnd(&head2, payload);
             insertEnd(&head3, payload);
