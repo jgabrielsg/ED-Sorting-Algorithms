@@ -49,7 +49,7 @@ int main() {
         bubbleSort(head1);
         auto timeEnd = high_resolution_clock::now();
         auto timeDuration = duration_cast<nanoseconds>(timeEnd - timeStart);
-        bubbleSortFile << timeDuration.count() << endl;""
+        bubbleSortFile << timeDuration.count() << endl;
 
         // Bubble Sort Otimizado
         auto timeStart2 = high_resolution_clock::now();
