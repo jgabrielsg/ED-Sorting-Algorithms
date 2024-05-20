@@ -12,7 +12,7 @@ using std::ofstream;
 int main() {
     // Valores teste
     const int listSize = 10000;
-    const int numberOfLists = 100;
+    const int numberOfLists = 1;
     
     // Abre os CSV's para salvar os tempos
     ofstream bubbleSortFile("bubble_sort_times.csv");
@@ -20,7 +20,7 @@ int main() {
     ofstream selectionSortFile("selection_sort_times.csv");
     ofstream optimizedSelectionSortFile("optimized_selection_sort_times.csv");
     ofstream insertionSortFile("insertion_sort_times.csv");
-    ofstream optimizedInsertionSortFile("optimized_insertion_sort_times.csv");
+    ofstream bucketSortFile("bucket_sort_times.csv");
     
     for (int i = 0; i < numberOfLists; i++)
     {
@@ -79,12 +79,12 @@ int main() {
         auto timeDuration3 = duration_cast<nanoseconds>(timeEnd3 - timeStart3);
         insertionSortFile << timeDuration3.count() << endl;
         
-        // Insertion Sort Otimizado
+        // Bucket Sort
         auto timeStart4 = high_resolution_clock::now();
-        optimizedInsertionSort(head4);
+        BucketSort(head4);
         auto timeEnd4 = high_resolution_clock::now();
         auto timeDuration4 = duration_cast<nanoseconds>(timeEnd4 - timeStart4);
-        optimizedInsertionSortFile << timeDuration4.count() << endl;
+        bucketSortFile << timeDuration4.count() << endl;
         
         // Liberando memória
         deleteList(&head1);
@@ -101,7 +101,7 @@ int main() {
     selectionSortFile.close();
     optimizedSelectionSortFile.close();
     insertionSortFile.close();
-    optimizedInsertionSortFile.close();
+    bucketSortFile.close();
 
     return 0;
 }

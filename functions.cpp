@@ -58,10 +58,7 @@ void displayList(Node* head) {
 }
 
 void deleteList(Node** head) {
-    if (*head == nullptr) {
-        cout << "Lista já está vazia." << endl;
-        return;
-    }
+    if (*head == nullptr) return;
 
     Node* current = *head;
     Node* nextNode = nullptr;
@@ -73,4 +70,13 @@ void deleteList(Node** head) {
     }
 
     *head = nullptr;
+}
+
+void passValuesToList(Node** head, Node* source) 
+{
+    while (source != nullptr) 
+    {
+        insertEnd(head, source->iPayload);
+        source = source->ptrNext;
+    }
 }

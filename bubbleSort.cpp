@@ -35,7 +35,6 @@ void bubbleSort(Node* node)
     }
 }
 
-
 void optimizedBubbleSort(Node* head) {
     if (head == nullptr) {
         cout << "Lista vazia: Não é possível realizar bubbleSort" << endl;

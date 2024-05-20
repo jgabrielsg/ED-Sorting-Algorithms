@@ -5,11 +5,7 @@ using std::cout;
 using std::endl;
 
 void insertionSort(Node* head) {
-    if (head == nullptr)
-    {
-        cout << "Lista vazia: Não é possível realizar insertionSort" << endl;
-        return;
-    }
+    if (head == nullptr) return;
     
     if (head->ptrPrev != nullptr)
     {
@@ -41,12 +37,12 @@ void insertionSort(Node* head) {
 
 void optimizedInsertionSort(Node*& head) {
     if (head == nullptr) {
-        cout << "Lista vazia: Não é possível realizar insertionSort" << endl;
+        cout << "Lista vazia: Não é possível realizar insertionSort Otimizado" << endl;
         return;
     }
 
     if (head->ptrPrev != nullptr) {
-        cout << "Meio ou Fim da Lista: Não é possível realizar insertionSort" << endl;
+        cout << "Meio ou Fim da Lista: Não é possível realizar insertionSort Otimizado" << endl;
         return;
     }
 
