@@ -33,7 +33,7 @@ int main() {
         
         // Preenchendo listas com dados aleatórios
         for(int j = 0; j < listSize; j++) {
-            int payload = rand() % 500; // Gera um número aleatório entre 0 e 500
+            int payload = rand() % 100; // Gera um número aleatório entre 0 e 100
             insertEnd(&head1, payload);
             insertEnd(&head2, payload);
             insertEnd(&head3, payload);
@@ -49,7 +49,7 @@ int main() {
         bubbleSort(head1);
         auto timeEnd = high_resolution_clock::now();
         auto timeDuration = duration_cast<nanoseconds>(timeEnd - timeStart);
-        bubbleSortFile << timeDuration.count() << endl;
+        bubbleSortFile << timeDuration.count() << endl;""
 
         // Bubble Sort Otimizado
         auto timeStart2 = high_resolution_clock::now();
