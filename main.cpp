@@ -8,32 +8,34 @@ using namespace std::chrono;
 using std::cout;
 using std::endl;
 using std::ofstream;
+using namespace node_operations;
+using namespace sorting_algorithms;
 
 int main() {
     // Valores teste
     const int listSize = 10000;
-    const int numberOfLists = 1;
+    const int numberOfLists = 100;
     
     // Abre os CSV's para salvar os tempos
-    ofstream bubbleSortFile("bubble_sort_times.csv");
-    ofstream optimizedBubbleSortFile("optimized_bubble_sort_times.csv");
-    ofstream selectionSortFile("selection_sort_times.csv");
-    ofstream optimizedSelectionSortFile("optimized_selection_sort_times.csv");
-    ofstream insertionSortFile("insertion_sort_times.csv");
-    ofstream bucketSortFile("bucket_sort_times.csv");
+    ofstream bubbleSortFile("bubbleSort.csv");
+    ofstream optimizedBubbleSortFile("bubbleSortOtimizado.csv");
+    ofstream selectionSortFile("selectionSort.csv");
+    ofstream optimizedSelectionSortFile("selectionSortOtimizado.csv");
+    ofstream insertionSortFile("insertionSortOtimizado.csv");
+    ofstream bucketSortFile("bucketSort.csv");
     
     for (int i = 0; i < numberOfLists; i++)
     {
-        Node* head1 = nullptr;
-        Node* head2 = nullptr;
-        Node* head3 = nullptr;
-        Node* head4 = nullptr;
-        Node* head5 = nullptr;
-        Node* head6 = nullptr;
+        Node<int>* head1 = nullptr;
+        Node<int>* head2 = nullptr;
+        Node<int>* head3 = nullptr;
+        Node<int>* head4 = nullptr;
+        Node<int>* head5 = nullptr;
+        Node<int>* head6 = nullptr;
         
         // Preenchendo listas com dados aleatórios
         for(int j = 0; j < listSize; j++) {
-            int payload = (rand() % 100) + 1; // Gera um número aleatório entre 1 e 100
+            int payload = rand() % 100; // Gera um número aleatório entre 0 e 100
             insertEnd(&head1, payload);
             insertEnd(&head2, payload);
             insertEnd(&head3, payload);
@@ -81,7 +83,7 @@ int main() {
         
         // Bucket Sort
         auto timeStart4 = high_resolution_clock::now();
-        BucketSort(head4);
+        bucketSort(head4);
         auto timeEnd4 = high_resolution_clock::now();
         auto timeDuration4 = duration_cast<nanoseconds>(timeEnd4 - timeStart4);
         bucketSortFile << timeDuration4.count() << endl;
