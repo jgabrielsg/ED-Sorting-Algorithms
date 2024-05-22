@@ -105,5 +105,71 @@ int main() {
     insertionSortFile.close();
     bucketSortFile.close();
 
+    // Exemplo de bucket sort:
+    Node<int>* head_teste = nullptr;
+    insertEnd(&head_teste, 30);
+    insertEnd(&head_teste, 40);
+    insertEnd(&head_teste, 34);
+    insertEnd(&head_teste, 5);
+    insertEnd(&head_teste, 14);
+    insertEnd(&head_teste, 15);
+    insertEnd(&head_teste, 7);
+    insertEnd(&head_teste, 8);
+    insertEnd(&head_teste, 38);
+    insertEnd(&head_teste, 17);
+    
+    displayList(head_teste);
+    
+    cout << "--------------------" << endl;
+    
+    // Cria 5 buckets
+    Node<int>* buckets[5] = {nullptr};
+    // Cada bucket vai ser uma lista que vai conter valores de um certo intervalo. No caso do exemplo,
+    // Os interavalos serão: 0-9, 10-19, 20-29, 30-39, 40-49
+    
+    // Distribui os valores nos buckets
+    Node<int>* current = head_teste;
+    while (current != nullptr) {
+        int value = current->iPayload;
+        int bucketIndex = value / 10;
+        insertEnd(&buckets[bucketIndex], value);
+        current = current->ptrNext;
+    }
+    
+    // Cada bucket agora possui valores que estão num range de apenas 10:
+    // Printando todos os buckets
+    for (int i = 0; i < 5; ++i) 
+    {
+        cout << "Bucket " << i;
+        displayList(buckets[i]);
+    }
+    
+     cout << "--------------------" << endl;
+    
+    // Agora ordenaremos todos os buckets
+    for (int i = 0; i < 5; ++i) {
+        insertionSort(buckets[i]);
+    }
+    
+     cout << "--------------------" << endl;
+    
+    for (int i = 0; i < 5; ++i) 
+    {
+        cout << "Bucket " << i << " ";
+        displayList(buckets[i]);
+    }
+    
+    // E basta passar os buckets ordenados para uma lista nova! 
+    Node<int>* lista_ordenada_teste = nullptr;
+    for (int i = 0; i < 5; ++i) {
+        passValuesToList(&lista_ordenada_teste, buckets[i]);
+        deleteList(&buckets[i]);
+    }
+    
+     cout << "--------------------" << endl;
+
+    // Na nossa função passaríamos essa lista ordenada para a lista original!
+    displayList(lista_ordenada_teste);
+
     return 0;
 }
