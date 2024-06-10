@@ -1,0 +1,5 @@
+Tree Creation Time: 950ms
+List Creation Time: 92ms
+Average BFS Search Time in Tree: 3457ns
+Average DFS Search Time in Tree: 435ns
+Average Search Time in List: 5943872ns
