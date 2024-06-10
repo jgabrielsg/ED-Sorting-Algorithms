@@ -85,3 +85,81 @@ namespace node_operations {
     template void passValuesToList(Node<int>** head, Node<int>* source);
 
 } // namespace node_operations
+
+namespace nodetree_operations {
+    NodeTree* searchNode(NodeTree* startingNode, int iData)
+    {
+        if(startingNode == nullptr) return nullptr;
+        else if(iData == startingNode->iPayload) return startingNode;
+        else if(iData < startingNode->iPayload) return searchNode(startingNode->ptrLeft, iData);
+        else return searchNode(startingNode->ptrRight, iData);
+    }
+
+    NodeTree* lesserLeaf(NodeTree* startingNode)
+    {
+        NodeTree* ptrCurrent = startingNode;
+        while (ptrCurrent && ptrCurrent->ptrLeft != nullptr) ptrCurrent = ptrCurrent->ptrLeft;
+        return ptrCurrent;
+    }
+
+    void enqueue(Queue* q, NodeTree* treeNode)
+    {
+        QueueNode* temp = (QueueNode*)malloc(sizeof(QueueNode));
+        temp->treeNode = treeNode;
+        temp->next = nullptr;
+        if (q->rear == nullptr)
+        {
+            q->front = q->rear = temp;
+            return;
+        }
+        q->rear->next = temp;
+        q->rear = temp;
+    }
+
+    NodeTree* dequeue(Queue* q)
+    {
+        if (q->front == nullptr)
+            return nullptr;
+        QueueNode* temp = q->front;
+        NodeTree* treeNode = temp->treeNode;
+        q->front = q->front->next;
+        if (q->front == nullptr)
+            q->rear = nullptr;
+        free(temp);
+        return treeNode;
+    }
+
+    Queue* createQueue()
+    {
+        Queue* q = (Queue*)malloc(sizeof(Queue));
+        q->front = q->rear = nullptr;
+        return q;
+    }
+
+    NodeTree* createNode(int iValue)
+    {
+        NodeTree* tmp = (NodeTree*) malloc(sizeof(NodeTree));
+        tmp->iPayload = iValue;
+        tmp->ptrLeft = nullptr;
+        tmp->ptrRight = nullptr;
+        return tmp;
+    }
+
+    NodeTree* insertNode(NodeTree* startingNode, int iData)
+    {
+        if(startingNode == nullptr)
+        {
+            return createNode(iData);
+        } 
+        if(iData < startingNode->iPayload)
+        {
+            startingNode->ptrLeft = insertNode(startingNode->ptrLeft, iData);
+        }
+        else
+        {
+            startingNode->ptrRight = insertNode(startingNode->ptrRight, iData);
+        }
+        
+        return startingNode;
+    }
+}

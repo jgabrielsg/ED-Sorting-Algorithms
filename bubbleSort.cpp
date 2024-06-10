@@ -5,6 +5,7 @@ using std::cout;
 using std::endl;
 using namespace node_operations;
 
+
 namespace sorting_algorithms {
     template <typename T>
     void bubbleSort(Node<T>* node)

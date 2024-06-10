@@ -4,6 +4,22 @@ struct Node {
     Node* ptrNext;
     Node* ptrPrev;
 };
+typedef struct NodeTree
+{
+    int iPayload;
+    NodeTree* ptrLeft;
+    NodeTree* ptrRight;
+} NodeTree;
+typedef struct QueueNode
+{
+    NodeTree* treeNode;
+    QueueNode* next;
+} QueueNode;
+typedef struct Queue
+{
+    QueueNode* front;
+    QueueNode* rear;
+} Queue;
 
 namespace node_operations {
     template <typename T>
@@ -43,4 +59,32 @@ namespace sorting_algorithms {
 
     template <typename T>
     void optimizedSelectionSort(Node<T>* head);
+}
+
+namespace nodetree_operations {
+    NodeTree* searchNode(NodeTree* startingNode, int iData);
+
+    NodeTree* lesserLeaf(NodeTree* startingNode);
+
+    void enqueue(Queue* q, NodeTree* treeNode);
+
+    NodeTree* dequeue(Queue* q);
+
+    Queue* createQueue();
+
+    NodeTree* createNode(int iValue);
+
+    NodeTree* insertNode(NodeTree* startingNode, int iData);
+}
+
+namespace tree_search {
+    void bfsTraversal(NodeTree* startingNode);
+
+    bool bfsSearch(NodeTree* startingNode, int target);
+
+    bool dfsSearch(NodeTree* startingNode, int target);
+
+    int treeHeight(NodeTree* startingNode);
+
+    void monitorTreeAndListCreation();
 }

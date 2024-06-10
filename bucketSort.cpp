@@ -56,7 +56,7 @@ namespace sorting_algorithms {
         if (current1 != nullptr || current2 != nullptr) cout << "Algo deu errado Bucket Sort!" << endl;
     }
 
-    // Explicit instantiation
+    // Explicit instantiation.
     template void bucketSort<int>(Node<int>* head);
 
 } // namespace sorting_algorithms

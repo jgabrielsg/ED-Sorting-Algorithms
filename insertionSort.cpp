@@ -53,6 +53,7 @@ namespace sorting_algorithms {
     
         Node<T>* ptrOuter = head->ptrNext;
     
+    
         while (ptrOuter != nullptr) {
             Node<T>* current = ptrOuter;
             ptrOuter = ptrOuter->ptrNext;
