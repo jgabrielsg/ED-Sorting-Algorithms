@@ -94,19 +94,19 @@ namespace tree_search {
         int randomValues[NUM_RANDOM_VALUES];
         int searchValues[NUM_SEARCH_VALUES];
 
-        // Generate 1,000,000 random values
+        // Gera 1,000,000 números
         for (int i = 0; i < NUM_RANDOM_VALUES; i++)
         {
             randomValues[i] = rand() % 1000000;
         }
 
-        // Select 100 random values for searching
+        // Seleciona 100 números para fazer a procura
         for (int i = 0; i < NUM_SEARCH_VALUES; i++)
         {
             searchValues[i] = rand() % 1000000;
         }
 
-        // Monitor Tree Creation
+        // Monitora o tempo da árvore
         auto start = high_resolution_clock::now();
 
         NodeTree* root = nullptr;
@@ -119,7 +119,7 @@ namespace tree_search {
         auto duration = duration_cast<milliseconds>(stop - start);
         cout << "Tree Creation Time: " << duration.count() << "ms" << endl;
 
-        // Monitor List Creation
+        // Monitora a da lista
         start = high_resolution_clock::now();
 
         Queue* q = createQueue();
@@ -133,7 +133,8 @@ namespace tree_search {
         duration = duration_cast<milliseconds>(stop - start);
         cout << "List Creation Time: " << duration.count() << "ms" << endl;
 
-        // Monitor Search Performance in Tree
+        // Agora veremos com o tempo de cada search
+        // Monitoramos primeiro a árvore
         long long totalBfsTime = 0;
         long long totalDfsTime = 0;
 
@@ -155,7 +156,7 @@ namespace tree_search {
         cout << "Average BFS Search Time in Tree: " << totalBfsTime / NUM_SEARCH_VALUES << "ns" << endl;
         cout << "Average DFS Search Time in Tree: " << totalDfsTime / NUM_SEARCH_VALUES << "ns" << endl;
 
-        // Monitor Search Performance in List
+        // Monitoramos a performance da lista agora
         long long totalListSearchTime = 0;
 
         for (int i = 0; i < NUM_SEARCH_VALUES; i++)
@@ -178,7 +179,7 @@ namespace tree_search {
 
         cout << "Average Search Time in List: " << totalListSearchTime / NUM_SEARCH_VALUES << "ns" << endl;
 
-        // Cleanup
+        // Free em tudo, não mais usaremos
         free(q);
     }
 }

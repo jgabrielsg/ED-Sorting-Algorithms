@@ -76,7 +76,7 @@ namespace node_operations {
         }
     }
 
-    // Explicit instantiation of template functions for int type
+    // Explicit instantiation
     template Node<int>* createNode<int>(int iPayload);
     template void insertEnd<int>(Node<int>** head, int iPayload);
     template void displayList<int>(Node<int>* head);
